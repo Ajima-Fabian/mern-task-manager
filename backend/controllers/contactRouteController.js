@@ -15,3 +15,12 @@ export const add_controller = async( req, res) => {
         res.status(500).json({error: 'Something went wrong!'})
     }
 }
+
+export const fetchContacts = async (req, res) => {
+    try{
+        const contacts = await Contact.find()
+        res.status(200).json(contacts)
+    } catch(err){
+        res.status(401).json({error: "Unabble to handle request"})
+    }
+}

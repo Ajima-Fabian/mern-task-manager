@@ -7,7 +7,7 @@ import NavBar from './components/NavBar'
 
 const App = () => {
   return (
-    <div className='bg-gray-100 h-screen'>
+    <div className='bg-gray-100 min-h-screen'>
       <Router>
         <header>
           <NavBar />
