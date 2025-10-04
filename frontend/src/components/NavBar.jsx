@@ -5,7 +5,7 @@ const NavBar = () => {
   return (
     <div className='flex px-10 py-5 justify-between md:px-[10%] shadow bg-white'>
         <div>
-            <h1 className='text-2xl font-bold tracking-wider text-blue-600'><Link to={'/'}>Socio</Link></h1>
+            <h1 className='text-2xl font-bold tracking-wider text-blue-600'><Link to={'/'}>PhoneBook</Link></h1>
         </div>
 
         <ul className='flex space-x-3'>
