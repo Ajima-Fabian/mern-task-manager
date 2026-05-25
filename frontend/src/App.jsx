@@ -1,29 +1,18 @@
-import React from 'react'
-import {BrowserRouter as Router,Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import {Routes, Route} from 'react-router-dom'
 import Login from './pages/Login'
-import Signup from './pages/Signup'
-import NavBar from './components/NavBar'
+import Dashboard from './pages/Dashboard'
+import Register from './pages/Register'
+
 
 const App = () => {
   return (
-    <div className='bg-gray-100 min-h-screen'>
-      <Router>
-        <header>
-          <NavBar />
-        </header>
-        <Routes>
-          <Route path='/' element={<Home />}/>
-          <Route path='/login' element={<Login />}/>
-          <Route path='/signup' element={<Signup />}/>
-        </Routes>
-      </Router>
-    </div>
+    <Routes>
+      <Route path='/' element={<Login/>}/>
+      <Route path='/register' element={<Register/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/dashboard' element={<Dashboard/>}/>
+    </Routes>
   )
 }
 
 export default App
-
-
-
-
