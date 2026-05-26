@@ -1,34 +1,35 @@
 import mongoose from "mongoose";
 import User from "../models/UserModel.js";
-import dotenv from 'dotenv'
+import dotenv from "dotenv";
 
-
-dotenv.config()
+dotenv.config();
 
 const createAdmin = async () => {
-    try{
-        await mongoose.connect(process.env.DB_URL_LOCAL)
+    try {
+        // use production-safe env
+        await mongoose.connect(process.env.MONGO_URI);
 
-        const existingAdmin = await User.findOne({email: "admin@gmail.com"})
+        const existingAdmin = await User.findOne({ email: "admin@gmail.com" });
 
-        if(existingAdmin){
-            console.error("Admin already exists")
+        if (existingAdmin) {
+            console.log("Admin already exists");
+            process.exit(0);
         }
 
         await User.create({
             name: "Admin",
             email: "admin@gmail.com",
-            password: 'admin1234',
+            password: "admin1234",
             role: "admin"
-        })
+        });
 
-        console.log("Admin created")
-    } catch(error){
-        console.log("Error creating admin")
+        console.log("Admin created successfully");
+        process.exit(0);
+
+    } catch (error) {
+        console.error("Error creating admin:", error.message);
+        process.exit(1);
     }
+};
 
-    process.exit()
-}
-
-
-createAdmin()
+createAdmin();
