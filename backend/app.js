@@ -24,6 +24,10 @@ app.use(express.urlencoded({extended: true}))
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/tasks', taskRoutes)
 
+app.get("/", (req, res) => {
+    res.json({ message: "API running 🚀" });
+});
+
 app.get("/health", (req,res) => {
     res.status(200).json({
         status: "OK",
