@@ -6,10 +6,11 @@ dotenv.config();
 
 const createAdmin = async () => {
     try {
-        // use production-safe env
         await mongoose.connect(process.env.MONGO_URI);
 
-        const existingAdmin = await User.findOne({ email: "admin@gmail.com" });
+        const existingAdmin = await User.findOne({
+            email: process.env.ADMIN_EMAIL
+        });
 
         if (existingAdmin) {
             console.log("Admin already exists");
@@ -18,8 +19,8 @@ const createAdmin = async () => {
 
         await User.create({
             name: "Admin",
-            email: "admin@gmail.com",
-            password: "admin1234",
+            email: process.env.ADMIN_EMAIL,
+            password: process.env.ADMIN_PASSWORD,
             role: "admin"
         });
 
